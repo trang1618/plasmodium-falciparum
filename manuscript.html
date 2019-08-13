@@ -25,19 +25,31 @@
 <header id="title-block-header">
 <h1 class="title">The Malaria DREAM challenge: team TPOT’s sub-challenge 2 write-up</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://trang1618.github.io/plasmodium-falciparum/v/98e0f2c98e4b0e89ddcec3d124e668d18870f37d/">permalink</a>) was automatically generated from <a href="https://github.com/trang1618/plasmodium-falciparum/tree/98e0f2c98e4b0e89ddcec3d124e668d18870f37d">trang1618/plasmodium-falciparum@98e0f2c</a> on August 13, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://trang1618.github.io/plasmodium-falciparum/v/4c484efd8c9c6252702dff85ada1946ef9d0532e/">permalink</a>) was automatically generated from <a href="https://github.com/trang1618/plasmodium-falciparum/tree/4c484efd8c9c6252702dff85ada1946ef9d0532e">trang1618/plasmodium-falciparum@4c484ef</a> on August 13, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
 <li><p><strong>Alena Orlenko</strong><br> <img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /> <a href="https://orcid.org/0000-0003-1757-293X">0000-0003-1757-293X</a> · <img src="images/github.svg" alt="GitHub icon" class="inline_icon" /> <a href="https://github.com/desmidium">desmidium</a> · <img src="images/twitter.svg" alt="Twitter icon" class="inline_icon" /> <a href="https://twitter.com/desmidium">desmidium</a><br> <small> Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104 </small></p></li>
 <li><p><strong>Trang T. Le</strong><br> <img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /> <a href="https://orcid.org/0000-0003-3737-6565">0000-0003-3737-6565</a> · <img src="images/github.svg" alt="GitHub icon" class="inline_icon" /> <a href="https://github.com/trang1618">trang1618</a> · <img src="images/twitter.svg" alt="Twitter icon" class="inline_icon" /> <a href="https://twitter.com/trang1618">trang1618</a><br> <small> Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104 </small></p></li>
 <li><p><strong>Weixuan Fu</strong><br> <img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /> <a href="https://orcid.org/0000-0002-6434-5468">0000-0002-6434-5468</a> · <img src="images/github.svg" alt="GitHub icon" class="inline_icon" /> <a href="https://github.com/weixuanfu">weixuanfu</a> · <img src="images/twitter.svg" alt="Twitter icon" class="inline_icon" /> <a href="https://twitter.com/weixuanfu">weixuanfu</a><br> <small> Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104 </small></p></li>
-<li><p><strong>Jason H. Moore</strong><br> <img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /> <a href="https://orcid.org/0000-0002-5015-1099">0000-0002-5015-1099</a> · <img src="images/github.svg" alt="GitHub icon" class="inline_icon" /> <a href="https://github.com/EpistasisLab">EpistasisLab</a> · <img src="images/twitter.svg" alt="Twitter icon" class="inline_icon" /> <a href="https://twitter.com/moorejh">moorejh</a><br> <small> Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104 · Funded by National Institutes of Health Grant Nos. LM010098, LM012601, AI116794 </small></p></li>
+<li><p><strong>Jason H. Moore</strong><br> <img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /> <a href="https://orcid.org/0000-0002-5015-1099">0000-0002-5015-1099</a> · <img src="images/github.svg" alt="GitHub icon" class="inline_icon" /> <a href="https://github.com/EpistasisLab">EpistasisLab</a> · <img src="images/twitter.svg" alt="Twitter icon" class="inline_icon" /> <a href="https://twitter.com/moorejh">moorejh</a><br> <small> Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104 </small></p></li>
 </ul>
 <h2 id="abstract" class="page_break_before">Abstract</h2>
-<p>In the subchallenge 2, the training set were collected very differently in comparison with the test set. Especially, training set is <em>in vivo</em> transcription data set described in <span class="citation" data-cites="6Qb18jcS">[<a href="#ref-6Qb18jcS" role="doc-biblioref">1</a>]</span> while test set is <em>in vitro</em> transcription data set. To adjust know batch effects, ComBat algorithm<span class="citation" data-cites="1HahRBkyb">[<a href="#ref-1HahRBkyb" role="doc-biblioref">2</a>]</span> in sva package[doi:10.1093/bioinformatics/bts034] was applied on the high-throughput transcription data and principal component analysis plots on the raw data and adjusted data were made for checking the performance of adjustment (Fig. <a href="#fig:PACbatch">1</a>).</p>
-<figure>
-<img src="images/PCA_for_batch_effect.png" alt="Figure 1: Principal component analysis plots before (A) and after (B) adjusting batch effects" id="fig:PACbatch" style="width:100.0%" /><figcaption><span>Figure 1:</span> Principal component analysis plots before (A) and after (B) adjusting batch effects</figcaption>
-</figure>
+<p>Challenge link: <a href="https://www.synapse.org/#!Synapse:syn16924919/wiki/583955">https://www.synapse.org/#!Synapse:syn16924919/wiki/583955</a></p>
+<p>Objective: Predict the parasite clearance rate of malaria parasite isolates based on in vitro transcriptional profiles.</p>
+<p>Data source: <span class="citation" data-cites="6Qb18jcS">[<a href="#ref-6Qb18jcS" role="doc-biblioref">1</a>]</span></p>
+<h2 id="methods">Methods</h2>
+<h3 id="data-harmonization">Data harmonization</h3>
+<p>For this subchallenge, the training dataset’s characteristics were very different compared to those of the test set. Importantly, training set contains <em>in vivo</em> transcription as described in <span class="citation" data-cites="6Qb18jcS">[<a href="#ref-6Qb18jcS" role="doc-biblioref">1</a>]</span> while test set contains <em>in vitro</em> transcription. Other differences in data collection, synchronization, microarray platforms, preprocessing steps, etc. have been detailed on the <a href="https://www.synapse.org/#!Synapse:syn16924919/wiki/590948">challenge website</a>. We first impute the missing data points using the KNN imputation method with k = 10 via the <a href="https://pypi.org/project/fancyimpute/">fancyimpute package</a>. Next, to adjust for batch effects between the two datasets, we apply the <em>ComBat</em> algorithm <span class="citation" data-cites="1HahRBkyb">[<a href="#ref-1HahRBkyb" role="doc-biblioref">2</a>]</span> from the <em>sva</em> R package <span class="citation" data-cites="TCHvrg6R">[<a href="#ref-TCHvrg6R" role="doc-biblioref">3</a>]</span> on the transcription data. We assess the effect of the adjustment by examining the principal component analysis (PCA) plots on the raw and processed data.</p>
+<h3 id="gene-feature-selection">Gene feature selection</h3>
+<p>Using the STatistical Inference Relief (STIR) algorithm <span class="citation" data-cites="rO22KppO">[<a href="#ref-rO22KppO" role="doc-biblioref">4</a>]</span>, we selected the genes with adjusted STIR P values &lt; 0.05. Specifically, with the MultiSURF neighborhood, STIR nearest-neighbors to select features whose association with an outcome may be due to epistasis</p>
+<h3 id="automated-machine-learning-for-model-training">Automated machine learning for model training</h3>
+<p>[TPOT details here…] We used balanced accuracy as our scoring function.</p>
+<h3 id="test-sample-selection">Test sample selection</h3>
+<p>While there is one single sample per isolate in the training set, there are eight samples for each of the 32 isolates in the test set (most have 2 biological replicates, 2 time points: 6 hours and 24 hours post invasion, perturbed with 5nM DHA (DHA) or perturbed with DMSO (UT)). Therefore, to obtain one prediction per isolate, we need to take caution in selecting which test samples to predict on. First, because the training samples are unperturbed, we discard the perturbed samples in the testing set, keeping only the controls (UT). Second, we analyze the developmental stage of each biological replicate at seperate timepoints. […] Transcriptional profiles in the test set were compared against the 3D7 sample from <span class="citation" data-cites="1Ca7UdCRk">[<a href="#ref-1Ca7UdCRk" role="doc-biblioref">5</a>]</span>.</p>
+<h3 id="non-genetic-features-consideration">Non-genetic features consideration</h3>
+<p>Because all samples from the test data were collected from the Thailand-Myanmar border, for now, we ignore the <code>Country</code> feature. In the future, however, perhaps we can place more weights on the training samples that are geographically closer to this region. We also ignore the <code>Kmeans.Grp</code> feature that is cluster groups corresponding to three types of transcription profile based on parasite developmental stage.</p>
+<h3 id="availability">Availability</h3>
+<p>Detailed preprocessing, modeling and analysis code for this study is available at <a href="https://github.com/EpistasisLab/malaria-challenge">https://github.com/EpistasisLab/malaria-challenge</a>.</p>
 <h2 id="references" class="page_break_before">References</h2>
 <!-- Explicitly insert bibliography here -->
 <div id="refs" role="doc-bibliography">
@@ -52,6 +64,24 @@ DOI: <a href="https://doi.org/10.1126/science.1260403">10.1126/science.1260403</
 W. Evan Johnson, Cheng Li, Ariel Rabinovic<br />
 <em>Biostatistics</em> (2006-04-21) <a href="https://doi.org/dsf386">https://doi.org/dsf386</a><br />
 DOI: <a href="https://doi.org/10.1093/biostatistics/kxj037">10.1093/biostatistics/kxj037</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/16632515">16632515</a></p>
+</div>
+<div id="ref-TCHvrg6R">
+<p>3. <strong>The sva package for removing batch effects and other unwanted variation in high-throughput experiments</strong><br />
+Jeffrey T. Leek, W. Evan Johnson, Hilary S. Parker, Andrew E. Jaffe, John D. Storey<br />
+<em>Bioinformatics</em> (2012-01-17) <a href="https://doi.org/fx9kw2">https://doi.org/fx9kw2</a><br />
+DOI: <a href="https://doi.org/10.1093/bioinformatics/bts034">10.1093/bioinformatics/bts034</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/22257669">22257669</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3307112">PMC3307112</a></p>
+</div>
+<div id="ref-rO22KppO">
+<p>4. <strong>STatistical Inference Relief (STIR) feature selection</strong><br />
+Trang T Le, Ryan J Urbanowicz, Jason H Moore, Brett A McKinney<br />
+<em>Bioinformatics</em> (2018-09-18) <a href="https://doi.org/gfbdwx">https://doi.org/gfbdwx</a><br />
+DOI: <a href="https://doi.org/10.1093/bioinformatics/bty788">10.1093/bioinformatics/bty788</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30239600">30239600</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6477983">PMC6477983</a></p>
+</div>
+<div id="ref-1Ca7UdCRk">
+<p>5. <strong>The Transcriptome of the Intraerythrocytic Developmental Cycle of Plasmodium falciparum</strong><br />
+Zbynek Bozdech, Manuel Llinás, Brian Lee Pulliam, Edith D Wong, Jingchun Zhu, Joseph L DeRisi<br />
+<em>PLoS Biology</em> (2003-08-18) <a href="https://doi.org/cd68hh">https://doi.org/cd68hh</a><br />
+DOI: <a href="https://doi.org/10.1371/journal.pbio.0000005">10.1371/journal.pbio.0000005</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/12929205">12929205</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC176545">PMC176545</a></p>
 </div>
 </div>
 <!-- default theme -->

@@ -20,9 +20,9 @@ title: 'The Malaria DREAM challenge: team TPOT''s sub-challenge 2 write-up'
 
 <small><em>
 This manuscript
-([permalink](https://trang1618.github.io/plasmodium-falciparum/v/98e0f2c98e4b0e89ddcec3d124e668d18870f37d/))
+([permalink](https://trang1618.github.io/plasmodium-falciparum/v/4c484efd8c9c6252702dff85ada1946ef9d0532e/))
 was automatically generated
-from [trang1618/plasmodium-falciparum@98e0f2c](https://github.com/trang1618/plasmodium-falciparum/tree/98e0f2c98e4b0e89ddcec3d124e668d18870f37d)
+from [trang1618/plasmodium-falciparum@4c484ef](https://github.com/trang1618/plasmodium-falciparum/tree/4c484efd8c9c6252702dff85ada1946ef9d0532e)
 on August 13, 2019.
 </em></small>
 
@@ -72,21 +72,53 @@ on August 13, 2019.
     [moorejh](https://twitter.com/moorejh)<br>
   <small>
      Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104
-     · Funded by National Institutes of Health Grant Nos. LM010098, LM012601, AI116794
   </small>
 
 
 
 ## Abstract {.page_break_before}
 
+Challenge link: [https://www.synapse.org/#!Synapse:syn16924919/wiki/583955](https://www.synapse.org/#!Synapse:syn16924919/wiki/583955)
+
+Objective: Predict the parasite clearance rate of malaria parasite isolates based on in vitro transcriptional profiles.
+
+Data source: [@6Qb18jcS]
 
 
+## Methods
 
-In the subchallenge 2, the training set were collected very differently in comparison with the test set.
-Especially, training set is *in vivo* transcription data set described in [@6Qb18jcS] while test set is *in vitro* transcription data set.
-To adjust know batch effects, ComBat algorithm[@1HahRBkyb] in sva package[doi:10.1093/bioinformatics/bts034] was applied on the high-throughput transcription data and principal component analysis plots on the raw data and adjusted data were made for checking the performance of adjustment (Fig. {@fig:PACbatch}). 
+### Data harmonization
+For this subchallenge, the training dataset's characteristics were very different compared to those of the test set.
+Importantly, training set contains *in vivo* transcription as described in [@6Qb18jcS] while test set contains *in vitro* transcription.
+Other differences in data collection, synchronization, microarray platforms, preprocessing steps, etc. have been detailed on the [challenge website](https://www.synapse.org/#!Synapse:syn16924919/wiki/590948).
+We first impute the missing data points using the KNN imputation method  with k = 10 via the [fancyimpute package](https://pypi.org/project/fancyimpute/).
+Next, to adjust for batch effects between the two datasets, we apply the *ComBat* algorithm [@1HahRBkyb] from the *sva* R package [@TCHvrg6R] on the transcription data.
+We assess the effect of the adjustment by examining the principal component analysis (PCA) plots on the raw and processed data. 
 
-![Principal component analysis plots before (A) and after (B) adjusting batch effects](images/PCA_for_batch_effect.png){#fig:PACbatch width="100%"}
+### Gene feature selection
+Using the STatistical Inference Relief (STIR) algorithm [@rO22KppO], we selected the genes with adjusted STIR P values < 0.05.
+Specifically, with the MultiSURF neighborhood, STIR nearest-neighbors to select features whose association with an outcome may be due to epistasis 
+
+### Automated machine learning for model training
+[TPOT details here...]
+We used balanced accuracy as our scoring function.
+
+### Test sample selection
+While there is one single sample per isolate in the training set, there are eight samples for each of the 32 isolates in the test set (most have 2 biological replicates, 2 time points: 6 hours and 24 hours post invasion, perturbed with 5nM DHA (DHA) or perturbed with DMSO (UT)).
+Therefore, to obtain one prediction per isolate, we need to take caution in selecting which test samples to predict on.
+First, because the training samples are unperturbed, we discard the perturbed samples in the testing set, keeping only the controls (UT).
+Second, we analyze the developmental stage of each biological replicate at seperate timepoints.
+[...]
+Transcriptional profiles in the test set were compared against the 3D7 sample from [@1Ca7UdCRk].
+
+### Non-genetic features consideration
+Because all samples from the test data were collected from the Thailand-Myanmar border, for now, we ignore the `Country` feature.
+In the future, however, perhaps we can place more weights on the training samples that are geographically closer to this region.
+We also ignore the `Kmeans.Grp` feature that is cluster groups corresponding to three types of transcription profile based on parasite developmental stage.
+
+### Availability
+Detailed preprocessing, modeling and analysis code for this study is available at [https://github.com/EpistasisLab/malaria-challenge](https://github.com/EpistasisLab/malaria-challenge).
+
 
 
 ## References {.page_break_before}
