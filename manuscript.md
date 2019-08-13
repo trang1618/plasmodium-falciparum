@@ -20,9 +20,9 @@ title: 'The Malaria DREAM challenge: team TPOT''s sub-challenge 2 write-up'
 
 <small><em>
 This manuscript
-([permalink](https://trang1618.github.io/plasmodium-falciparum/v/4c484efd8c9c6252702dff85ada1946ef9d0532e/))
+([permalink](https://trang1618.github.io/plasmodium-falciparum/v/1fbf14f8066c176c9347a1a1b7c8460617447aff/))
 was automatically generated
-from [trang1618/plasmodium-falciparum@4c484ef](https://github.com/trang1618/plasmodium-falciparum/tree/4c484efd8c9c6252702dff85ada1946ef9d0532e)
+from [trang1618/plasmodium-falciparum@1fbf14f](https://github.com/trang1618/plasmodium-falciparum/tree/1fbf14f8066c176c9347a1a1b7c8460617447aff)
 on August 13, 2019.
 </em></small>
 
@@ -119,6 +119,32 @@ We also ignore the `Kmeans.Grp` feature that is cluster groups corresponding to 
 ### Availability
 Detailed preprocessing, modeling and analysis code for this study is available at [https://github.com/EpistasisLab/malaria-challenge](https://github.com/EpistasisLab/malaria-challenge).
 
+
+
+## Results
+### Batch effect adjustment
+Before batch adjustment, the two datasets are clearly separated in the first two principal component dimensions (Fig. {@fig:PACbatch}A).
+After being adjusted for batch effect, this dataset-specific effect is less evident (Fig. {@fig:PACbatch}B).
+The amount of variance explained in each component also seems to be more balanced.
+![Principal component analysis plots before (A) and after (B) adjusting for batch effects](images/PCA_for_batch_effect.png){#fig:PACbatch width="100%"}
+
+The training dataset consists of 1043 in vivo parasite isolates, each with 4952 transcriptomic features, out of which STIR selects 1068.
+
+TPOT cross-validated balanced accuracy...
+
+### Test sample selection
+In general, the parasite developmental stages in the training set are smaller than those in the test set (Fig. {@fig:stages}).
+![Developmental stages in training set and testing set](images/dev-stage.png){#fig:stages width="100%"}
+
+
+
+
+
+
+## Conclusion
+
+### Take home
+Even with automated machine learning, at the moment, we still need to be clever at preprocessing and integrating the data.
 
 
 ## References {.page_break_before}
