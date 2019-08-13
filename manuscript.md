@@ -1,14 +1,16 @@
 ---
 author-meta:
-- John Doe
-- Jane Roe
+- Alena Orlenko
+- Trang T. Le
+- Weixuan Fu
+- Jason H. Moore
 date-meta: '2019-08-13'
 keywords:
 - markdown
 - publishing
 - manubot
 lang: en-US
-title: Manuscript Title
+title: 'The Malaria DREAM challenge: team TPOT''s sub-challenge 2 write-up'
 ...
 
 
@@ -18,9 +20,9 @@ title: Manuscript Title
 
 <small><em>
 This manuscript
-([permalink](https://trang1618.github.io/plasmodium-falciparum/v/7f6b7bdb167f9ff26f6b5ea13eb426312ff2d903/))
+([permalink](https://trang1618.github.io/plasmodium-falciparum/v/98e0f2c98e4b0e89ddcec3d124e668d18870f37d/))
 was automatically generated
-from [trang1618/plasmodium-falciparum@7f6b7bd](https://github.com/trang1618/plasmodium-falciparum/tree/7f6b7bdb167f9ff26f6b5ea13eb426312ff2d903)
+from [trang1618/plasmodium-falciparum@98e0f2c](https://github.com/trang1618/plasmodium-falciparum/tree/98e0f2c98e4b0e89ddcec3d124e668d18870f37d)
 on August 13, 2019.
 </em></small>
 
@@ -28,25 +30,49 @@ on August 13, 2019.
 
 
 
-+ **John Doe**<br>
++ **Alena Orlenko**<br>
     ![ORCID icon](images/orcid.svg){.inline_icon}
-    [XXXX-XXXX-XXXX-XXXX](https://orcid.org/XXXX-XXXX-XXXX-XXXX)
+    [0000-0003-1757-293X](https://orcid.org/0000-0003-1757-293X)
     · ![GitHub icon](images/github.svg){.inline_icon}
-    [johndoe](https://github.com/johndoe)
+    [desmidium](https://github.com/desmidium)
     · ![Twitter icon](images/twitter.svg){.inline_icon}
-    [johndoe](https://twitter.com/johndoe)<br>
+    [desmidium](https://twitter.com/desmidium)<br>
   <small>
-     Department of Something, University of Whatever
-     · Funded by Grant XXXXXXXX
+     Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104
   </small>
 
-+ **Jane Roe**<br>
++ **Trang T. Le**<br>
     ![ORCID icon](images/orcid.svg){.inline_icon}
-    [XXXX-XXXX-XXXX-XXXX](https://orcid.org/XXXX-XXXX-XXXX-XXXX)
+    [0000-0003-3737-6565](https://orcid.org/0000-0003-3737-6565)
     · ![GitHub icon](images/github.svg){.inline_icon}
-    [janeroe](https://github.com/janeroe)<br>
+    [trang1618](https://github.com/trang1618)
+    · ![Twitter icon](images/twitter.svg){.inline_icon}
+    [trang1618](https://twitter.com/trang1618)<br>
   <small>
-     Department of Something, University of Whatever; Department of Whatever, University of Something
+     Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104
+  </small>
+
++ **Weixuan Fu**<br>
+    ![ORCID icon](images/orcid.svg){.inline_icon}
+    [0000-0002-6434-5468](https://orcid.org/0000-0002-6434-5468)
+    · ![GitHub icon](images/github.svg){.inline_icon}
+    [weixuanfu](https://github.com/weixuanfu)
+    · ![Twitter icon](images/twitter.svg){.inline_icon}
+    [weixuanfu](https://twitter.com/weixuanfu)<br>
+  <small>
+     Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104
+  </small>
+
++ **Jason H. Moore**<br>
+    ![ORCID icon](images/orcid.svg){.inline_icon}
+    [0000-0002-5015-1099](https://orcid.org/0000-0002-5015-1099)
+    · ![GitHub icon](images/github.svg){.inline_icon}
+    [EpistasisLab](https://github.com/EpistasisLab)
+    · ![Twitter icon](images/twitter.svg){.inline_icon}
+    [moorejh](https://twitter.com/moorejh)<br>
+  <small>
+     Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104
+     · Funded by National Institutes of Health Grant Nos. LM010098, LM012601, AI116794
   </small>
 
 

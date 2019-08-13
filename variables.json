@@ -2,51 +2,75 @@
   "date": "August 13, 2019",
   "authors": [
     {
-      "github": "johndoe",
-      "name": "John Doe",
-      "initials": "JD",
-      "orcid": "XXXX-XXXX-XXXX-XXXX",
-      "twitter": "johndoe",
-      "email": "john.doe@something.com",
+      "github": "desmidium",
+      "name": "Alena Orlenko",
+      "initials": "AO",
+      "orcid": "0000-0003-1757-293X",
+      "twitter": "desmidium",
+      "email": "aorlenko@upenn.edu",
       "affiliations": [
-        "Department of Something, University of Whatever"
+        "Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104"
       ],
-      "funders": "Grant XXXXXXXX",
       "affiliation_numbers": [
         1
       ]
     },
     {
-      "github": "janeroe",
-      "name": "Jane Roe",
-      "initials": "JR",
-      "orcid": "XXXX-XXXX-XXXX-XXXX",
-      "email": "jane.roe@whatever.edu",
+      "github": "trang1618",
+      "name": "Trang T. Le",
+      "initials": "TTL",
+      "orcid": "0000-0003-3737-6565",
+      "twitter": "trang1618",
+      "email": "ttle@pennmedicine.upenn.edu",
       "affiliations": [
-        "Department of Something, University of Whatever",
-        "Department of Whatever, University of Something"
+        "Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104"
       ],
       "affiliation_numbers": [
-        1,
-        2
+        1
+      ]
+    },
+    {
+      "github": "weixuanfu",
+      "name": "Weixuan Fu",
+      "initials": "WF",
+      "orcid": "0000-0002-6434-5468",
+      "twitter": "weixuanfu",
+      "email": "weixuanf@pennmedicine.upenn.edu",
+      "affiliations": [
+        "Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104"
+      ],
+      "affiliation_numbers": [
+        1
+      ]
+    },
+    {
+      "github": "EpistasisLab",
+      "name": "Jason H. Moore",
+      "initials": "JHM",
+      "orcid": "0000-0002-5015-1099",
+      "twitter": "moorejh",
+      "email": "jhmoore@upenn.edu",
+      "affiliations": [
+        "Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104"
+      ],
+      "funders": "National Institutes of Health Grant Nos. LM010098, LM012601, AI116794",
+      "symbol_str": "\u2020",
+      "affiliation_numbers": [
+        1
       ]
     }
   ],
   "affiliations": [
     {
-      "affiliation": "Department of Something, University of Whatever",
+      "affiliation": "Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104",
       "affiliation_number": 1
-    },
-    {
-      "affiliation": "Department of Whatever, University of Something",
-      "affiliation_number": 2
     }
   ],
   "ci_source": {
     "repo_slug": "trang1618/plasmodium-falciparum",
     "repo_owner": "trang1618",
     "repo_name": "plasmodium-falciparum",
-    "commit": "7f6b7bdb167f9ff26f6b5ea13eb426312ff2d903"
+    "commit": "98e0f2c98e4b0e89ddcec3d124e668d18870f37d"
   },
   "manuscript_stats": {
     "reference_counts": {
