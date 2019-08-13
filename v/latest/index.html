@@ -25,7 +25,7 @@
 <header id="title-block-header">
 <h1 class="title">The Malaria DREAM challenge: team TPOT’s sub-challenge 2 write-up</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://trang1618.github.io/plasmodium-falciparum/v/4c484efd8c9c6252702dff85ada1946ef9d0532e/">permalink</a>) was automatically generated from <a href="https://github.com/trang1618/plasmodium-falciparum/tree/4c484efd8c9c6252702dff85ada1946ef9d0532e">trang1618/plasmodium-falciparum@4c484ef</a> on August 13, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://trang1618.github.io/plasmodium-falciparum/v/1fbf14f8066c176c9347a1a1b7c8460617447aff/">permalink</a>) was automatically generated from <a href="https://github.com/trang1618/plasmodium-falciparum/tree/1fbf14f8066c176c9347a1a1b7c8460617447aff">trang1618/plasmodium-falciparum@1fbf14f</a> on August 13, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
 <li><p><strong>Alena Orlenko</strong><br> <img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /> <a href="https://orcid.org/0000-0003-1757-293X">0000-0003-1757-293X</a> · <img src="images/github.svg" alt="GitHub icon" class="inline_icon" /> <a href="https://github.com/desmidium">desmidium</a> · <img src="images/twitter.svg" alt="Twitter icon" class="inline_icon" /> <a href="https://twitter.com/desmidium">desmidium</a><br> <small> Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104 </small></p></li>
@@ -50,6 +50,16 @@
 <p>Because all samples from the test data were collected from the Thailand-Myanmar border, for now, we ignore the <code>Country</code> feature. In the future, however, perhaps we can place more weights on the training samples that are geographically closer to this region. We also ignore the <code>Kmeans.Grp</code> feature that is cluster groups corresponding to three types of transcription profile based on parasite developmental stage.</p>
 <h3 id="availability">Availability</h3>
 <p>Detailed preprocessing, modeling and analysis code for this study is available at <a href="https://github.com/EpistasisLab/malaria-challenge">https://github.com/EpistasisLab/malaria-challenge</a>.</p>
+<h2 id="results">Results</h2>
+<h3 id="batch-effect-adjustment">Batch effect adjustment</h3>
+<p>Before batch adjustment, the two datasets are clearly separated in the first two principal component dimensions (Fig. {<span class="citation" data-cites="fig:PACbatch">[<span class="citeproc-not-found" data-reference-id="fig:PACbatch"><strong>???</strong></span>]</span>}A). After being adjusted for batch effect, this dataset-specific effect is less evident (Fig. {<span class="citation" data-cites="fig:PACbatch">[<span class="citeproc-not-found" data-reference-id="fig:PACbatch"><strong>???</strong></span>]</span>}B). The amount of variance explained in each component also seems to be more balanced. <img src="images/PCA_for_batch_effect.png" alt="Principal component analysis plots before (A) and after (B) adjusting for batch effects" id="fig:PACbatch" style="width:100.0%" /></p>
+<p>The training dataset consists of 1043 in vivo parasite isolates, each with 4952 transcriptomic features, out of which STIR selects 1068.</p>
+<p>TPOT cross-validated balanced accuracy…</p>
+<h3 id="test-sample-selection-1">Test sample selection</h3>
+<p>In general, the parasite developmental stages in the training set are smaller than those in the test set (Fig. {<span class="citation" data-cites="fig:stages">[<span class="citeproc-not-found" data-reference-id="fig:stages"><strong>???</strong></span>]</span>}). <img src="images/dev-stage.png" alt="Developmental stages in training set and testing set" id="fig:stages" style="width:100.0%" /></p>
+<h2 id="conclusion">Conclusion</h2>
+<h3 id="take-home">Take home</h3>
+<p>Even with automated machine learning, at the moment, we still need to be clever at preprocessing and integrating the data.</p>
 <h2 id="references" class="page_break_before">References</h2>
 <!-- Explicitly insert bibliography here -->
 <div id="refs" role="doc-bibliography">
