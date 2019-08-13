@@ -2,7 +2,7 @@
 author-meta:
 - John Doe
 - Jane Roe
-date-meta: '2019-08-12'
+date-meta: '2019-08-13'
 keywords:
 - markdown
 - publishing
@@ -18,10 +18,10 @@ title: Manuscript Title
 
 <small><em>
 This manuscript
-([permalink](https://trang1618.github.io/plasmodium-falciparum/v/04210098370af17a177da51b57854401f7e2fbe5/))
+([permalink](https://trang1618.github.io/plasmodium-falciparum/v/7f6b7bdb167f9ff26f6b5ea13eb426312ff2d903/))
 was automatically generated
-from [trang1618/plasmodium-falciparum@0421009](https://github.com/trang1618/plasmodium-falciparum/tree/04210098370af17a177da51b57854401f7e2fbe5)
-on August 12, 2019.
+from [trang1618/plasmodium-falciparum@7f6b7bd](https://github.com/trang1618/plasmodium-falciparum/tree/7f6b7bdb167f9ff26f6b5ea13eb426312ff2d903)
+on August 13, 2019.
 </em></small>
 
 ## Authors
@@ -54,6 +54,13 @@ on August 12, 2019.
 ## Abstract {.page_break_before}
 
 
+
+
+In the subchallenge 2, the training set were collected very differently in comparison with the test set.
+Especially, training set is *in vivo* transcription data set described in [@6Qb18jcS] while test set is *in vitro* transcription data set.
+To adjust know batch effects, ComBat algorithm[@1HahRBkyb] in sva package[doi:10.1093/bioinformatics/bts034] was applied on the high-throughput transcription data and principal component analysis plots on the raw data and adjusted data were made for checking the performance of adjustment (Fig. {@fig:PACbatch}). 
+
+![Principal component analysis plots before (A) and after (B) adjusting batch effects](images/PCA_for_batch_effect.png){#fig:PACbatch width="100%"}
 
 
 ## References {.page_break_before}

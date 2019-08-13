@@ -1,5 +1,5 @@
 {
-  "date": "August 12, 2019",
+  "date": "August 13, 2019",
   "authors": [
     {
       "github": "johndoe",
@@ -46,12 +46,13 @@
     "repo_slug": "trang1618/plasmodium-falciparum",
     "repo_owner": "trang1618",
     "repo_name": "plasmodium-falciparum",
-    "commit": "04210098370af17a177da51b57854401f7e2fbe5"
+    "commit": "7f6b7bdb167f9ff26f6b5ea13eb426312ff2d903"
   },
   "manuscript_stats": {
     "reference_counts": {
-      "total": 0
+      "doi": 2,
+      "total": 2
     },
-    "word_count": 232
+    "word_count": 322
   }
 }
