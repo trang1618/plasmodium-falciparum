@@ -25,7 +25,7 @@
 <header id="title-block-header">
 <h1 class="title">The Malaria DREAM challenge: team TPOT’s sub-challenge 2 write-up</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://trang1618.github.io/plasmodium-falciparum/v/a772fe693c00549523457bb3a2b0c2e505370ef2/">permalink</a>) was automatically generated from <a href="https://github.com/trang1618/plasmodium-falciparum/tree/a772fe693c00549523457bb3a2b0c2e505370ef2">trang1618/plasmodium-falciparum@a772fe6</a> on August 14, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://trang1618.github.io/plasmodium-falciparum/v/2ca4494165c95dd52d855e55f7f282aafeb595a8/">permalink</a>) was automatically generated from <a href="https://github.com/trang1618/plasmodium-falciparum/tree/2ca4494165c95dd52d855e55f7f282aafeb595a8">trang1618/plasmodium-falciparum@2ca4494</a> on August 14, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
 <li><p><strong>Alena Orlenko</strong><br> <img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /> <a href="https://orcid.org/0000-0003-1757-293X">0000-0003-1757-293X</a> · <img src="images/github.svg" alt="GitHub icon" class="inline_icon" /> <a href="https://github.com/desmidium">desmidium</a> · <img src="images/twitter.svg" alt="Twitter icon" class="inline_icon" /> <a href="https://twitter.com/desmidium">desmidium</a><br> <small> Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104 </small></p></li>
@@ -54,7 +54,7 @@
 <h3 id="batch-effect-adjustment">Batch effect adjustment</h3>
 <p>Before batch adjustment, the two datasets are clearly separated in the first two principal component dimensions (Fig. <a href="#fig:PACbatch">1</a>A). After being adjusted for batch effect, this dataset-specific effect is less evident (Fig. <a href="#fig:PACbatch">1</a>B). The amount of variance explained in each component also seems to be more balanced.</p>
 <figure>
-<img src="images/PCA_for_batch_effect.png" alt="Figure 1: Principal component analysis plots before (A) and after (B) adjusting for batch effects" id="fig:PACbatch" style="width:100.0%" /><figcaption><span>Figure 1:</span> Principal component analysis plots before (A) and after (B) adjusting for batch effects</figcaption>
+<img src="images/PCA_for_batch_effect.png" alt="Figure 1: Principal component analysis plots before (A) and after (B) adjusting for batch effects" id="fig:PACbatch" style="width:90.0%" /><figcaption><span>Figure 1:</span> Principal component analysis plots before (A) and after (B) adjusting for batch effects</figcaption>
 </figure>
 <h3 id="stir-feature-selection-and-tpot-cross-validated-balanced-accuracy">STIR feature selection and TPOT cross-validated balanced accuracy</h3>
 <p>The training dataset consists of 1043 in vivo parasite isolates, each with 4952 transcriptomic features, out of which STIR selects 1068.</p>
@@ -62,7 +62,7 @@
 <h3 id="test-sample-selection-1">Test sample selection</h3>
 <p>In general, the parasite developmental stages in the training set are smaller than those in the test set (Fig. <a href="#fig:stages">2</a>). Because of this difference in distribution, we could not use stage of parasites as guideline to select the test samples. Instead, at 24 hpi, we decided to compute the average of the two lowest probabilities per isolate (across two types of treatments and two biological replicates). In other words, setting our goal to be detecting isolates with SLOW parasite clearance rate (SLOW = 1), we want to decrease the false negative rate (SLOW isolates predicted as FAST) by sacrificing some false positives (FAST isolates predicted as SLOW).</p>
 <figure>
-<img src="images/dev-stage.png" alt="Figure 2: Developmental stages in training set and testing set" id="fig:stages" style="width:100.0%" /><figcaption><span>Figure 2:</span> Developmental stages in training set and testing set</figcaption>
+<img src="images/dev-stage.png" alt="Figure 2: Developmental stages in training set and testing set" id="fig:stages" style="width:70.0%" /><figcaption><span>Figure 2:</span> Developmental stages in training set and testing set</figcaption>
 </figure>
 <h2 id="conclusion">Conclusion</h2>
 <p>Even with autoML, at the moment, we still need to be clever at preprocessing and integrating the data for this type of problems where the test set is completely independent of the training set. To reduce computation time, further preprocessing (feature selection for dimensionality reduction) also needed before feeding the data into the autoML tool. Additional non-genetic information is important. Even though we did not find an efficient way to harmonize the asexual stage feature from the two datasets, because there are a lot of training samples, we should probably have removed the 30 samples with developmental stages of larger than 17 out of the training dataset.</p>
