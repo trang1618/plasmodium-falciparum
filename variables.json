@@ -69,7 +69,7 @@
     "repo_slug": "trang1618/plasmodium-falciparum",
     "repo_owner": "trang1618",
     "repo_name": "plasmodium-falciparum",
-    "commit": "420d68405ff22ee93e032515723d9d91d25619a5"
+    "commit": "a772fe693c00549523457bb3a2b0c2e505370ef2"
   },
   "manuscript_stats": {
     "reference_counts": {
@@ -77,6 +77,6 @@
       "isbn": 1,
       "total": 8
     },
-    "word_count": 1125
+    "word_count": 1209
   }
 }

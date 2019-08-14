@@ -20,9 +20,9 @@ title: 'The Malaria DREAM challenge: team TPOT''s sub-challenge 2 write-up'
 
 <small><em>
 This manuscript
-([permalink](https://trang1618.github.io/plasmodium-falciparum/v/420d68405ff22ee93e032515723d9d91d25619a5/))
+([permalink](https://trang1618.github.io/plasmodium-falciparum/v/a772fe693c00549523457bb3a2b0c2e505370ef2/))
 was automatically generated
-from [trang1618/plasmodium-falciparum@420d684](https://github.com/trang1618/plasmodium-falciparum/tree/420d68405ff22ee93e032515723d9d91d25619a5)
+from [trang1618/plasmodium-falciparum@a772fe6](https://github.com/trang1618/plasmodium-falciparum/tree/a772fe693c00549523457bb3a2b0c2e505370ef2)
 on August 14, 2019.
 </em></small>
 
@@ -152,9 +152,10 @@ In other words, setting our goal to be detecting isolates with SLOW parasite cle
 
 ## Conclusion
 
-
-### Take home
-Even with automated machine learning, at the moment, we still need to be clever at preprocessing and integrating the data.
+Even with autoML, at the moment, we still need to be clever at preprocessing and integrating the data for this type of problems where the test set is completely independent of the training set.
+To reduce computation time, further preprocessing (feature selection for dimensionality reduction) also needed before feeding the data into the autoML tool.
+Additional non-genetic information is important.
+Even though we did not find an efficient way to harmonize the asexual stage feature from the two datasets, because there are a lot of training samples, we should probably have removed the 30 samples with developmental stages of larger than 17 out of the training dataset.
 
 It is surprising to us that there is not a separate holdout set for this challenge.
 In an attempt to prevent overfitting, the organizers only released the ranking instead of the absolute score of each team's performance.
