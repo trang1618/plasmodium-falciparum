@@ -25,7 +25,7 @@
 <header id="title-block-header">
 <h1 class="title">The Malaria DREAM challenge: team TPOT’s sub-challenge 2 write-up</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://trang1618.github.io/plasmodium-falciparum/v/420d68405ff22ee93e032515723d9d91d25619a5/">permalink</a>) was automatically generated from <a href="https://github.com/trang1618/plasmodium-falciparum/tree/420d68405ff22ee93e032515723d9d91d25619a5">trang1618/plasmodium-falciparum@420d684</a> on August 14, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://trang1618.github.io/plasmodium-falciparum/v/a772fe693c00549523457bb3a2b0c2e505370ef2/">permalink</a>) was automatically generated from <a href="https://github.com/trang1618/plasmodium-falciparum/tree/a772fe693c00549523457bb3a2b0c2e505370ef2">trang1618/plasmodium-falciparum@a772fe6</a> on August 14, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
 <li><p><strong>Alena Orlenko</strong><br> <img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /> <a href="https://orcid.org/0000-0003-1757-293X">0000-0003-1757-293X</a> · <img src="images/github.svg" alt="GitHub icon" class="inline_icon" /> <a href="https://github.com/desmidium">desmidium</a> · <img src="images/twitter.svg" alt="Twitter icon" class="inline_icon" /> <a href="https://twitter.com/desmidium">desmidium</a><br> <small> Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104 </small></p></li>
@@ -65,8 +65,7 @@
 <img src="images/dev-stage.png" alt="Figure 2: Developmental stages in training set and testing set" id="fig:stages" style="width:100.0%" /><figcaption><span>Figure 2:</span> Developmental stages in training set and testing set</figcaption>
 </figure>
 <h2 id="conclusion">Conclusion</h2>
-<h3 id="take-home">Take home</h3>
-<p>Even with automated machine learning, at the moment, we still need to be clever at preprocessing and integrating the data.</p>
+<p>Even with autoML, at the moment, we still need to be clever at preprocessing and integrating the data for this type of problems where the test set is completely independent of the training set. To reduce computation time, further preprocessing (feature selection for dimensionality reduction) also needed before feeding the data into the autoML tool. Additional non-genetic information is important. Even though we did not find an efficient way to harmonize the asexual stage feature from the two datasets, because there are a lot of training samples, we should probably have removed the 30 samples with developmental stages of larger than 17 out of the training dataset.</p>
 <p>It is surprising to us that there is not a separate holdout set for this challenge. In an attempt to prevent overfitting, the organizers only released the ranking instead of the absolute score of each team’s performance. However, a team can still assess the trajectory of their performance compared to other teams and tweak their method in that direction.</p>
 <h2 id="references" class="page_break_before">References</h2>
 <!-- Explicitly insert bibliography here -->
