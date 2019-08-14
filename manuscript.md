@@ -20,9 +20,9 @@ title: 'The Malaria DREAM challenge: team TPOT''s sub-challenge 2 write-up'
 
 <small><em>
 This manuscript
-([permalink](https://trang1618.github.io/plasmodium-falciparum/v/6b2e053af6b4a183cb7b9d702b3bd10088afd0bf/))
+([permalink](https://trang1618.github.io/plasmodium-falciparum/v/420d68405ff22ee93e032515723d9d91d25619a5/))
 was automatically generated
-from [trang1618/plasmodium-falciparum@6b2e053](https://github.com/trang1618/plasmodium-falciparum/tree/6b2e053af6b4a183cb7b9d702b3bd10088afd0bf)
+from [trang1618/plasmodium-falciparum@420d684](https://github.com/trang1618/plasmodium-falciparum/tree/420d68405ff22ee93e032515723d9d91d25619a5)
 on August 14, 2019.
 </em></small>
 
@@ -108,10 +108,11 @@ We used balanced accuracy as our scoring function.
 ### Test sample selection
 While there is one single sample per isolate in the training set, there are eight samples for each of the 32 isolates in the test set (most have 2 biological replicates, 2 time points: 6 hours and 24 hours post invasion, perturbed with 5nM DHA (DHA) or perturbed with DMSO (UT)).
 Therefore, to obtain one prediction per isolate, we need to take caution in selecting which test samples to predict on.
-First, because the training samples are unperturbed, we discard the perturbed samples in the testing set, keeping only the controls (UT).
+First, because the majority of the training samples are estimated at 18 hours post invasion (hpi), we selected test samples at 24 hpi (closer to 18 hpi compared to 6 hpi).
 Second, we analyze the developmental stage of each biological replicate at seperate timepoints.
+We hypothesize that the group of isolates with asexual stage distribution close to that of the training set will yield the most accurate prediction for each isolate.
 While the stage of the parasites in the training set was determined by Mok et al. according to [@6Qb18jcS], transcriptional profiles in the test set were compared against the 3D7 sample from [@1Ca7UdCRk].
-The Methods section in Mok et al.'s [supplementary material](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5642863/#SMtitle) indicates that the two asexual stage estimation techniques are similar [@1ANuI4cSl, @1Ca7UdCRk], but we carefully investigate the distributions of parasite stages in two datasets.
+The Methods section in Mok et al.'s [supplementary material](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5642863/#SMtitle) indicates that the two asexual stage estimation techniques are similar [@1ANuI4cSl, @1Ca7UdCRk], but we carefully investigate the distributions of parasite stages in two datasets before making any specific selection.
 
 ### Non-genetic features consideration
 Because all samples from the test data were collected from the Thailand-Myanmar border, for now, we ignore the `Country` feature.
@@ -131,12 +132,16 @@ The amount of variance explained in each component also seems to be more balance
 
 ![Principal component analysis plots before (A) and after (B) adjusting for batch effects](images/PCA_for_batch_effect.png){#fig:PACbatch width="100%"}
 
+### STIR feature selection and TPOT cross-validated balanced accuracy
 The training dataset consists of 1043 in vivo parasite isolates, each with 4952 transcriptomic features, out of which STIR selects 1068.
 
-TPOT cross-validated balanced accuracy...
+TPOT [...]
 
 ### Test sample selection
 In general, the parasite developmental stages in the training set are smaller than those in the test set (Fig. {@fig:stages}).
+Because of this difference in distribution, we could not use stage of parasites as guideline to select the test samples.
+Instead, at 24 hpi, we decided to compute the average of the two lowest probabilities per isolate (across two types of treatments and two biological replicates).
+In other words, setting our goal to be detecting isolates with SLOW parasite clearance rate (SLOW = 1), we want to decrease the false negative rate (SLOW isolates predicted as FAST) by sacrificing some false positives (FAST isolates predicted as SLOW).
 
 ![Developmental stages in training set and testing set](images/dev-stage.png){#fig:stages width="100%"}
 
