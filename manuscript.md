@@ -4,7 +4,7 @@ author-meta:
 - Trang T. Le
 - Weixuan Fu
 - Jason H. Moore
-date-meta: '2019-08-13'
+date-meta: '2019-08-14'
 keywords:
 - markdown
 - publishing
@@ -20,10 +20,10 @@ title: 'The Malaria DREAM challenge: team TPOT''s sub-challenge 2 write-up'
 
 <small><em>
 This manuscript
-([permalink](https://trang1618.github.io/plasmodium-falciparum/v/1fbf14f8066c176c9347a1a1b7c8460617447aff/))
+([permalink](https://trang1618.github.io/plasmodium-falciparum/v/6b2e053af6b4a183cb7b9d702b3bd10088afd0bf/))
 was automatically generated
-from [trang1618/plasmodium-falciparum@1fbf14f](https://github.com/trang1618/plasmodium-falciparum/tree/1fbf14f8066c176c9347a1a1b7c8460617447aff)
-on August 13, 2019.
+from [trang1618/plasmodium-falciparum@6b2e053](https://github.com/trang1618/plasmodium-falciparum/tree/6b2e053af6b4a183cb7b9d702b3bd10088afd0bf)
+on August 14, 2019.
 </em></small>
 
 ## Authors
@@ -91,16 +91,18 @@ Data source: [@6Qb18jcS]
 For this subchallenge, the training dataset's characteristics were very different compared to those of the test set.
 Importantly, training set contains *in vivo* transcription as described in [@6Qb18jcS] while test set contains *in vitro* transcription.
 Other differences in data collection, synchronization, microarray platforms, preprocessing steps, etc. have been detailed on the [challenge website](https://www.synapse.org/#!Synapse:syn16924919/wiki/590948).
-We first impute the missing data points using the KNN imputation method  with k = 10 via the [fancyimpute package](https://pypi.org/project/fancyimpute/).
+We first impute the missing data points using the KNN imputation method [@1BCJtTxnM] with k = 10 via the [fancyimpute](https://pypi.org/project/fancyimpute/) Python package.
 Next, to adjust for batch effects between the two datasets, we apply the *ComBat* algorithm [@1HahRBkyb] from the *sva* R package [@TCHvrg6R] on the transcription data.
 We assess the effect of the adjustment by examining the principal component analysis (PCA) plots on the raw and processed data. 
 
-### Gene feature selection
+### Transcriptional feature selection
 Using the STatistical Inference Relief (STIR) algorithm [@rO22KppO], we selected the genes with adjusted STIR P values < 0.05.
-Specifically, with the MultiSURF neighborhood, STIR nearest-neighbors to select features whose association with an outcome may be due to epistasis 
+Specifically, with the MultiSURF neighborhood, STIR nearest-neighbors to select transcriptional features whose association with an outcome may be due to epistasis.
 
 ### Automated machine learning for model training
-[TPOT details here...]
+The Tree-based Pipeline Optimization Tool (TPOT) is a Python Automated Machine Learning (AutoML) tool that uses genetic programming to optimize machine learning pipelines for analyzing biomedical data [@QkGSlAB3].
+However, like other AutoML tools, TPOT currently requires high computational expense when analyzing high dimensional data.
+Therefore, even though we already manually select features prior to executing TPOT, we also limit the final classifier of TPOT pipelines to [LinearSVC](https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html) to focus TPOT's effort on identifying the sequence of preprocessors (e.g., [recursive feature elimination](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html) or [function transformer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.FunctionTransformer.html)).
 We used balanced accuracy as our scoring function.
 
 ### Test sample selection
@@ -108,8 +110,8 @@ While there is one single sample per isolate in the training set, there are eigh
 Therefore, to obtain one prediction per isolate, we need to take caution in selecting which test samples to predict on.
 First, because the training samples are unperturbed, we discard the perturbed samples in the testing set, keeping only the controls (UT).
 Second, we analyze the developmental stage of each biological replicate at seperate timepoints.
-[...]
-Transcriptional profiles in the test set were compared against the 3D7 sample from [@1Ca7UdCRk].
+While the stage of the parasites in the training set was determined by Mok et al. according to [@6Qb18jcS], transcriptional profiles in the test set were compared against the 3D7 sample from [@1Ca7UdCRk].
+The Methods section in Mok et al.'s [supplementary material](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5642863/#SMtitle) indicates that the two asexual stage estimation techniques are similar [@1ANuI4cSl, @1Ca7UdCRk], but we carefully investigate the distributions of parasite stages in two datasets.
 
 ### Non-genetic features consideration
 Because all samples from the test data were collected from the Thailand-Myanmar border, for now, we ignore the `Country` feature.
@@ -126,6 +128,7 @@ Detailed preprocessing, modeling and analysis code for this study is available a
 Before batch adjustment, the two datasets are clearly separated in the first two principal component dimensions (Fig. {@fig:PACbatch}A).
 After being adjusted for batch effect, this dataset-specific effect is less evident (Fig. {@fig:PACbatch}B).
 The amount of variance explained in each component also seems to be more balanced.
+
 ![Principal component analysis plots before (A) and after (B) adjusting for batch effects](images/PCA_for_batch_effect.png){#fig:PACbatch width="100%"}
 
 The training dataset consists of 1043 in vivo parasite isolates, each with 4952 transcriptomic features, out of which STIR selects 1068.
@@ -134,6 +137,7 @@ TPOT cross-validated balanced accuracy...
 
 ### Test sample selection
 In general, the parasite developmental stages in the training set are smaller than those in the test set (Fig. {@fig:stages}).
+
 ![Developmental stages in training set and testing set](images/dev-stage.png){#fig:stages width="100%"}
 
 
@@ -143,9 +147,13 @@ In general, the parasite developmental stages in the training set are smaller th
 
 ## Conclusion
 
+
 ### Take home
 Even with automated machine learning, at the moment, we still need to be clever at preprocessing and integrating the data.
 
+It is surprising to us that there is not a separate holdout set for this challenge.
+In an attempt to prevent overfitting, the organizers only released the ranking instead of the absolute score of each team's performance.
+However, a team can still assess the trajectory of their performance compared to other teams and tweak their method in that direction.
 
 ## References {.page_break_before}
 
