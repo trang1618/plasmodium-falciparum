@@ -1,7 +1,7 @@
 # Output directory containing the formatted manuscript
 
 The [`gh-pages`](https://github.com/trang1618/plasmodium-falciparum/tree/gh-pages) branch hosts the contents of this directory at https://trang1618.github.io/plasmodium-falciparum/.
-The permalink for this webpage version is https://trang1618.github.io/plasmodium-falciparum/v/a772fe693c00549523457bb3a2b0c2e505370ef2/.
+The permalink for this webpage version is https://trang1618.github.io/plasmodium-falciparum/v/2ca4494165c95dd52d855e55f7f282aafeb595a8/.
 To redirect to the permalink for the latest manuscript version at anytime, use the link https://trang1618.github.io/plasmodium-falciparum/v/freeze/.
 
 ## Files
@@ -36,4 +36,4 @@ Verifying timestamps with the `ots verify` command requires running a local bitc
 ## Source
 
 The manuscripts in this directory were built from
-[`a772fe693c00549523457bb3a2b0c2e505370ef2`](https://github.com/trang1618/plasmodium-falciparum/commit/a772fe693c00549523457bb3a2b0c2e505370ef2).
+[`2ca4494165c95dd52d855e55f7f282aafeb595a8`](https://github.com/trang1618/plasmodium-falciparum/commit/2ca4494165c95dd52d855e55f7f282aafeb595a8).
