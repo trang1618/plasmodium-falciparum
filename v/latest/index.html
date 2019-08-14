@@ -8,7 +8,7 @@
   <meta name="author" content="Trang T. Le" />
   <meta name="author" content="Weixuan Fu" />
   <meta name="author" content="Jason H. Moore" />
-  <meta name="dcterms.date" content="2019-08-13" />
+  <meta name="dcterms.date" content="2019-08-14" />
   <meta name="keywords" content="markdown, publishing, manubot" />
   <title>The Malaria DREAM challenge: team TPOT’s sub-challenge 2 write-up</title>
   <style>
@@ -25,7 +25,7 @@
 <header id="title-block-header">
 <h1 class="title">The Malaria DREAM challenge: team TPOT’s sub-challenge 2 write-up</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://trang1618.github.io/plasmodium-falciparum/v/1fbf14f8066c176c9347a1a1b7c8460617447aff/">permalink</a>) was automatically generated from <a href="https://github.com/trang1618/plasmodium-falciparum/tree/1fbf14f8066c176c9347a1a1b7c8460617447aff">trang1618/plasmodium-falciparum@1fbf14f</a> on August 13, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://trang1618.github.io/plasmodium-falciparum/v/6b2e053af6b4a183cb7b9d702b3bd10088afd0bf/">permalink</a>) was automatically generated from <a href="https://github.com/trang1618/plasmodium-falciparum/tree/6b2e053af6b4a183cb7b9d702b3bd10088afd0bf">trang1618/plasmodium-falciparum@6b2e053</a> on August 14, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
 <li><p><strong>Alena Orlenko</strong><br> <img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /> <a href="https://orcid.org/0000-0003-1757-293X">0000-0003-1757-293X</a> · <img src="images/github.svg" alt="GitHub icon" class="inline_icon" /> <a href="https://github.com/desmidium">desmidium</a> · <img src="images/twitter.svg" alt="Twitter icon" class="inline_icon" /> <a href="https://twitter.com/desmidium">desmidium</a><br> <small> Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104 </small></p></li>
@@ -39,27 +39,34 @@
 <p>Data source: <span class="citation" data-cites="6Qb18jcS">[<a href="#ref-6Qb18jcS" role="doc-biblioref">1</a>]</span></p>
 <h2 id="methods">Methods</h2>
 <h3 id="data-harmonization">Data harmonization</h3>
-<p>For this subchallenge, the training dataset’s characteristics were very different compared to those of the test set. Importantly, training set contains <em>in vivo</em> transcription as described in <span class="citation" data-cites="6Qb18jcS">[<a href="#ref-6Qb18jcS" role="doc-biblioref">1</a>]</span> while test set contains <em>in vitro</em> transcription. Other differences in data collection, synchronization, microarray platforms, preprocessing steps, etc. have been detailed on the <a href="https://www.synapse.org/#!Synapse:syn16924919/wiki/590948">challenge website</a>. We first impute the missing data points using the KNN imputation method with k = 10 via the <a href="https://pypi.org/project/fancyimpute/">fancyimpute package</a>. Next, to adjust for batch effects between the two datasets, we apply the <em>ComBat</em> algorithm <span class="citation" data-cites="1HahRBkyb">[<a href="#ref-1HahRBkyb" role="doc-biblioref">2</a>]</span> from the <em>sva</em> R package <span class="citation" data-cites="TCHvrg6R">[<a href="#ref-TCHvrg6R" role="doc-biblioref">3</a>]</span> on the transcription data. We assess the effect of the adjustment by examining the principal component analysis (PCA) plots on the raw and processed data.</p>
-<h3 id="gene-feature-selection">Gene feature selection</h3>
-<p>Using the STatistical Inference Relief (STIR) algorithm <span class="citation" data-cites="rO22KppO">[<a href="#ref-rO22KppO" role="doc-biblioref">4</a>]</span>, we selected the genes with adjusted STIR P values &lt; 0.05. Specifically, with the MultiSURF neighborhood, STIR nearest-neighbors to select features whose association with an outcome may be due to epistasis</p>
+<p>For this subchallenge, the training dataset’s characteristics were very different compared to those of the test set. Importantly, training set contains <em>in vivo</em> transcription as described in <span class="citation" data-cites="6Qb18jcS">[<a href="#ref-6Qb18jcS" role="doc-biblioref">1</a>]</span> while test set contains <em>in vitro</em> transcription. Other differences in data collection, synchronization, microarray platforms, preprocessing steps, etc. have been detailed on the <a href="https://www.synapse.org/#!Synapse:syn16924919/wiki/590948">challenge website</a>. We first impute the missing data points using the KNN imputation method <span class="citation" data-cites="1BCJtTxnM">[<a href="#ref-1BCJtTxnM" role="doc-biblioref">2</a>]</span> with k = 10 via the <a href="https://pypi.org/project/fancyimpute/">fancyimpute</a> Python package. Next, to adjust for batch effects between the two datasets, we apply the <em>ComBat</em> algorithm <span class="citation" data-cites="1HahRBkyb">[<a href="#ref-1HahRBkyb" role="doc-biblioref">3</a>]</span> from the <em>sva</em> R package <span class="citation" data-cites="TCHvrg6R">[<a href="#ref-TCHvrg6R" role="doc-biblioref">4</a>]</span> on the transcription data. We assess the effect of the adjustment by examining the principal component analysis (PCA) plots on the raw and processed data.</p>
+<h3 id="transcriptional-feature-selection">Transcriptional feature selection</h3>
+<p>Using the STatistical Inference Relief (STIR) algorithm <span class="citation" data-cites="rO22KppO">[<a href="#ref-rO22KppO" role="doc-biblioref">5</a>]</span>, we selected the genes with adjusted STIR P values &lt; 0.05. Specifically, with the MultiSURF neighborhood, STIR nearest-neighbors to select transcriptional features whose association with an outcome may be due to epistasis.</p>
 <h3 id="automated-machine-learning-for-model-training">Automated machine learning for model training</h3>
-<p>[TPOT details here…] We used balanced accuracy as our scoring function.</p>
+<p>The Tree-based Pipeline Optimization Tool (TPOT) is a Python Automated Machine Learning (AutoML) tool that uses genetic programming to optimize machine learning pipelines for analyzing biomedical data <span class="citation" data-cites="QkGSlAB3">[<a href="#ref-QkGSlAB3" role="doc-biblioref">6</a>]</span>. However, like other AutoML tools, TPOT currently requires high computational expense when analyzing high dimensional data. Therefore, even though we already manually select features prior to executing TPOT, we also limit the final classifier of TPOT pipelines to <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html">LinearSVC</a> to focus TPOT’s effort on identifying the sequence of preprocessors (e.g., <a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html">recursive feature elimination</a> or <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.FunctionTransformer.html">function transformer</a>). We used balanced accuracy as our scoring function.</p>
 <h3 id="test-sample-selection">Test sample selection</h3>
-<p>While there is one single sample per isolate in the training set, there are eight samples for each of the 32 isolates in the test set (most have 2 biological replicates, 2 time points: 6 hours and 24 hours post invasion, perturbed with 5nM DHA (DHA) or perturbed with DMSO (UT)). Therefore, to obtain one prediction per isolate, we need to take caution in selecting which test samples to predict on. First, because the training samples are unperturbed, we discard the perturbed samples in the testing set, keeping only the controls (UT). Second, we analyze the developmental stage of each biological replicate at seperate timepoints. […] Transcriptional profiles in the test set were compared against the 3D7 sample from <span class="citation" data-cites="1Ca7UdCRk">[<a href="#ref-1Ca7UdCRk" role="doc-biblioref">5</a>]</span>.</p>
+<p>While there is one single sample per isolate in the training set, there are eight samples for each of the 32 isolates in the test set (most have 2 biological replicates, 2 time points: 6 hours and 24 hours post invasion, perturbed with 5nM DHA (DHA) or perturbed with DMSO (UT)). Therefore, to obtain one prediction per isolate, we need to take caution in selecting which test samples to predict on. First, because the training samples are unperturbed, we discard the perturbed samples in the testing set, keeping only the controls (UT). Second, we analyze the developmental stage of each biological replicate at seperate timepoints. While the stage of the parasites in the training set was determined by Mok et al. according to <span class="citation" data-cites="6Qb18jcS">[<a href="#ref-6Qb18jcS" role="doc-biblioref">1</a>]</span>, transcriptional profiles in the test set were compared against the 3D7 sample from <span class="citation" data-cites="1Ca7UdCRk">[<a href="#ref-1Ca7UdCRk" role="doc-biblioref">7</a>]</span>. The Methods section in Mok et al.’s <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5642863/#SMtitle">supplementary material</a> indicates that the two asexual stage estimation techniques are similar <span class="citation" data-cites="1ANuI4cSl">[<a href="#ref-1ANuI4cSl" role="doc-biblioref">8</a>]</span>, but we carefully investigate the distributions of parasite stages in two datasets.</p>
 <h3 id="non-genetic-features-consideration">Non-genetic features consideration</h3>
 <p>Because all samples from the test data were collected from the Thailand-Myanmar border, for now, we ignore the <code>Country</code> feature. In the future, however, perhaps we can place more weights on the training samples that are geographically closer to this region. We also ignore the <code>Kmeans.Grp</code> feature that is cluster groups corresponding to three types of transcription profile based on parasite developmental stage.</p>
 <h3 id="availability">Availability</h3>
 <p>Detailed preprocessing, modeling and analysis code for this study is available at <a href="https://github.com/EpistasisLab/malaria-challenge">https://github.com/EpistasisLab/malaria-challenge</a>.</p>
 <h2 id="results">Results</h2>
 <h3 id="batch-effect-adjustment">Batch effect adjustment</h3>
-<p>Before batch adjustment, the two datasets are clearly separated in the first two principal component dimensions (Fig. {<span class="citation" data-cites="fig:PACbatch">[<span class="citeproc-not-found" data-reference-id="fig:PACbatch"><strong>???</strong></span>]</span>}A). After being adjusted for batch effect, this dataset-specific effect is less evident (Fig. {<span class="citation" data-cites="fig:PACbatch">[<span class="citeproc-not-found" data-reference-id="fig:PACbatch"><strong>???</strong></span>]</span>}B). The amount of variance explained in each component also seems to be more balanced. <img src="images/PCA_for_batch_effect.png" alt="Principal component analysis plots before (A) and after (B) adjusting for batch effects" id="fig:PACbatch" style="width:100.0%" /></p>
+<p>Before batch adjustment, the two datasets are clearly separated in the first two principal component dimensions (Fig. <a href="#fig:PACbatch">1</a>A). After being adjusted for batch effect, this dataset-specific effect is less evident (Fig. <a href="#fig:PACbatch">1</a>B). The amount of variance explained in each component also seems to be more balanced.</p>
+<figure>
+<img src="images/PCA_for_batch_effect.png" alt="Figure 1: Principal component analysis plots before (A) and after (B) adjusting for batch effects" id="fig:PACbatch" style="width:100.0%" /><figcaption><span>Figure 1:</span> Principal component analysis plots before (A) and after (B) adjusting for batch effects</figcaption>
+</figure>
 <p>The training dataset consists of 1043 in vivo parasite isolates, each with 4952 transcriptomic features, out of which STIR selects 1068.</p>
 <p>TPOT cross-validated balanced accuracy…</p>
 <h3 id="test-sample-selection-1">Test sample selection</h3>
-<p>In general, the parasite developmental stages in the training set are smaller than those in the test set (Fig. {<span class="citation" data-cites="fig:stages">[<span class="citeproc-not-found" data-reference-id="fig:stages"><strong>???</strong></span>]</span>}). <img src="images/dev-stage.png" alt="Developmental stages in training set and testing set" id="fig:stages" style="width:100.0%" /></p>
+<p>In general, the parasite developmental stages in the training set are smaller than those in the test set (Fig. <a href="#fig:stages">2</a>).</p>
+<figure>
+<img src="images/dev-stage.png" alt="Figure 2: Developmental stages in training set and testing set" id="fig:stages" style="width:100.0%" /><figcaption><span>Figure 2:</span> Developmental stages in training set and testing set</figcaption>
+</figure>
 <h2 id="conclusion">Conclusion</h2>
 <h3 id="take-home">Take home</h3>
 <p>Even with automated machine learning, at the moment, we still need to be clever at preprocessing and integrating the data.</p>
+<p>It is surprising to us that there is not a separate holdout set for this challenge. In an attempt to prevent overfitting, the organizers only released the ranking instead of the absolute score of each team’s performance. However, a team can still assess the trajectory of their performance compared to other teams and tweak their method in that direction.</p>
 <h2 id="references" class="page_break_before">References</h2>
 <!-- Explicitly insert bibliography here -->
 <div id="refs" role="doc-bibliography">
@@ -69,29 +76,47 @@ S. Mok, E. A. Ashley, P. E. Ferreira, L. Zhu, Z. Lin, T. Yeo, K. Chotivanich, M.
 <em>Science</em> (2014-12-11) <a href="https://doi.org/f3ph2f">https://doi.org/f3ph2f</a><br />
 DOI: <a href="https://doi.org/10.1126/science.1260403">10.1126/science.1260403</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/25502316">25502316</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5642863">PMC5642863</a></p>
 </div>
+<div id="ref-1BCJtTxnM">
+<p>2. <strong>Data mining with R: learning with case studies</strong><br />
+Luís Torgo<br />
+<em>Chapman &amp; Hall/CRC</em> (2011)<br />
+ISBN: <a href="https://worldcat.org/isbn/9781439810187">9781439810187</a></p>
+</div>
 <div id="ref-1HahRBkyb">
-<p>2. <strong>Adjusting batch effects in microarray expression data using empirical Bayes methods</strong><br />
+<p>3. <strong>Adjusting batch effects in microarray expression data using empirical Bayes methods</strong><br />
 W. Evan Johnson, Cheng Li, Ariel Rabinovic<br />
 <em>Biostatistics</em> (2006-04-21) <a href="https://doi.org/dsf386">https://doi.org/dsf386</a><br />
 DOI: <a href="https://doi.org/10.1093/biostatistics/kxj037">10.1093/biostatistics/kxj037</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/16632515">16632515</a></p>
 </div>
 <div id="ref-TCHvrg6R">
-<p>3. <strong>The sva package for removing batch effects and other unwanted variation in high-throughput experiments</strong><br />
+<p>4. <strong>The sva package for removing batch effects and other unwanted variation in high-throughput experiments</strong><br />
 Jeffrey T. Leek, W. Evan Johnson, Hilary S. Parker, Andrew E. Jaffe, John D. Storey<br />
 <em>Bioinformatics</em> (2012-01-17) <a href="https://doi.org/fx9kw2">https://doi.org/fx9kw2</a><br />
 DOI: <a href="https://doi.org/10.1093/bioinformatics/bts034">10.1093/bioinformatics/bts034</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/22257669">22257669</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3307112">PMC3307112</a></p>
 </div>
 <div id="ref-rO22KppO">
-<p>4. <strong>STatistical Inference Relief (STIR) feature selection</strong><br />
+<p>5. <strong>STatistical Inference Relief (STIR) feature selection</strong><br />
 Trang T Le, Ryan J Urbanowicz, Jason H Moore, Brett A McKinney<br />
 <em>Bioinformatics</em> (2018-09-18) <a href="https://doi.org/gfbdwx">https://doi.org/gfbdwx</a><br />
 DOI: <a href="https://doi.org/10.1093/bioinformatics/bty788">10.1093/bioinformatics/bty788</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/30239600">30239600</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6477983">PMC6477983</a></p>
 </div>
+<div id="ref-QkGSlAB3">
+<p>6. <strong>Evaluation of a Tree-based Pipeline Optimization Tool for Automating Data Science</strong><br />
+Randal S. Olson, Nathan Bartley, Ryan J. Urbanowicz, Jason H. Moore<br />
+<em>Proceedings of the 2016 on Genetic and Evolutionary Computation Conference - GECCO ’16</em> (2016) <a href="https://doi.org/gfgqv2">https://doi.org/gfgqv2</a><br />
+DOI: <a href="https://doi.org/10.1145/2908812.2908918">10.1145/2908812.2908918</a></p>
+</div>
 <div id="ref-1Ca7UdCRk">
-<p>5. <strong>The Transcriptome of the Intraerythrocytic Developmental Cycle of Plasmodium falciparum</strong><br />
+<p>7. <strong>The Transcriptome of the Intraerythrocytic Developmental Cycle of Plasmodium falciparum</strong><br />
 Zbynek Bozdech, Manuel Llinás, Brian Lee Pulliam, Edith D Wong, Jingchun Zhu, Joseph L DeRisi<br />
 <em>PLoS Biology</em> (2003-08-18) <a href="https://doi.org/cd68hh">https://doi.org/cd68hh</a><br />
 DOI: <a href="https://doi.org/10.1371/journal.pbio.0000005">10.1371/journal.pbio.0000005</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/12929205">12929205</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC176545">PMC176545</a></p>
+</div>
+<div id="ref-1ANuI4cSl">
+<p>8. <strong>Quantitative Time-course Profiling of Parasite and Host Cell Proteins in the Human Malaria ParasitePlasmodium falciparum</strong><br />
+Bernardo Javier Foth, Neng Zhang, Balbir Kaur Chaal, Siu Kwan Sze, Peter Rainer Preiser, Zbynek Bozdech<br />
+<em>Molecular &amp; Cellular Proteomics</em> (2011-05-10) <a href="https://doi.org/cwb67f">https://doi.org/cwb67f</a><br />
+DOI: <a href="https://doi.org/10.1074/mcp.m110.006411">10.1074/mcp.m110.006411</a> · PMID: <a href="https://www.ncbi.nlm.nih.gov/pubmed/21558492">21558492</a> · PMCID: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3149090">PMC3149090</a></p>
 </div>
 </div>
 <!-- default theme -->
