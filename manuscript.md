@@ -4,7 +4,7 @@ author-meta:
 - Trang T. Le
 - Weixuan Fu
 - Jason H. Moore
-date-meta: '2019-08-14'
+date-meta: '2019-09-06'
 keywords:
 - markdown
 - publishing
@@ -20,10 +20,10 @@ title: 'The Malaria DREAM challenge: team TPOT''s sub-challenge 2 write-up'
 
 <small><em>
 This manuscript
-([permalink](https://trang1618.github.io/plasmodium-falciparum/v/2ca4494165c95dd52d855e55f7f282aafeb595a8/))
+([permalink](https://trang1618.github.io/plasmodium-falciparum/v/bcc456966b49d3dba3b5e9e5f341f80fac8e3901/))
 was automatically generated
-from [trang1618/plasmodium-falciparum@2ca4494](https://github.com/trang1618/plasmodium-falciparum/tree/2ca4494165c95dd52d855e55f7f282aafeb595a8)
-on August 14, 2019.
+from [trang1618/plasmodium-falciparum@bcc4569](https://github.com/trang1618/plasmodium-falciparum/tree/bcc456966b49d3dba3b5e9e5f341f80fac8e3901)
+on September 6, 2019.
 </em></small>
 
 ## Authors
@@ -135,7 +135,14 @@ The amount of variance explained in each component also seems to be more balance
 ### STIR feature selection and TPOT cross-validated balanced accuracy
 The training dataset consists of 1043 in vivo parasite isolates, each with 4952 transcriptomic features, out of which STIR selects 1068.
 
-TPOT [...]
+We first run 50 replicates of the full configuration TPOT for 1000 generations (or 24 hours - whichever happened first) with the pipeline population size of 1000.
+We have identified that the majority of pipelines contain Logistic Regression or Linear SVC as a classifier.
+We further run TPOT for the second time using the same simulation parameters but reducing configuration to only two classifiers in the list: Logistic Regression and Linear SVC.
+To evaluate a pipeline performance on the training dataset we used balanced accuracy implemented in TPOT as a custom metric.
+Balanced accuracy computes each class accuracy on per class base and in the binary case is equal to the arithmetic mean of sensitivity and specificity.
+Using balanced accuracy is highly advised in case of an imbalanced dataset to avoid inflated performance estimates.
+We chose the top 20 best performing pipelines to be used for the testing dataset predictions and then averaged these predictions to get the final score.
+
 
 ### Test sample selection
 In general, the parasite developmental stages in the training set are smaller than those in the test set (Fig. {@fig:stages}).

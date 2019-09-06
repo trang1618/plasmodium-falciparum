@@ -1,5 +1,5 @@
 {
-  "date": "August 14, 2019",
+  "date": "September 6, 2019",
   "authors": [
     {
       "github": "desmidium",
@@ -69,7 +69,7 @@
     "repo_slug": "trang1618/plasmodium-falciparum",
     "repo_owner": "trang1618",
     "repo_name": "plasmodium-falciparum",
-    "commit": "2ca4494165c95dd52d855e55f7f282aafeb595a8"
+    "commit": "bcc456966b49d3dba3b5e9e5f341f80fac8e3901"
   },
   "manuscript_stats": {
     "reference_counts": {
@@ -77,6 +77,6 @@
       "isbn": 1,
       "total": 8
     },
-    "word_count": 1209
+    "word_count": 1367
   }
 }

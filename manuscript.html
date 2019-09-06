@@ -8,7 +8,7 @@
   <meta name="author" content="Trang T. Le" />
   <meta name="author" content="Weixuan Fu" />
   <meta name="author" content="Jason H. Moore" />
-  <meta name="dcterms.date" content="2019-08-14" />
+  <meta name="dcterms.date" content="2019-09-06" />
   <meta name="keywords" content="markdown, publishing, manubot" />
   <title>The Malaria DREAM challenge: team TPOT’s sub-challenge 2 write-up</title>
   <style>
@@ -25,7 +25,7 @@
 <header id="title-block-header">
 <h1 class="title">The Malaria DREAM challenge: team TPOT’s sub-challenge 2 write-up</h1>
 </header>
-<p><small><em> This manuscript (<a href="https://trang1618.github.io/plasmodium-falciparum/v/2ca4494165c95dd52d855e55f7f282aafeb595a8/">permalink</a>) was automatically generated from <a href="https://github.com/trang1618/plasmodium-falciparum/tree/2ca4494165c95dd52d855e55f7f282aafeb595a8">trang1618/plasmodium-falciparum@2ca4494</a> on August 14, 2019. </em></small></p>
+<p><small><em> This manuscript (<a href="https://trang1618.github.io/plasmodium-falciparum/v/bcc456966b49d3dba3b5e9e5f341f80fac8e3901/">permalink</a>) was automatically generated from <a href="https://github.com/trang1618/plasmodium-falciparum/tree/bcc456966b49d3dba3b5e9e5f341f80fac8e3901">trang1618/plasmodium-falciparum@bcc4569</a> on September 6, 2019. </em></small></p>
 <h2 id="authors">Authors</h2>
 <ul>
 <li><p><strong>Alena Orlenko</strong><br> <img src="images/orcid.svg" alt="ORCID icon" class="inline_icon" /> <a href="https://orcid.org/0000-0003-1757-293X">0000-0003-1757-293X</a> · <img src="images/github.svg" alt="GitHub icon" class="inline_icon" /> <a href="https://github.com/desmidium">desmidium</a> · <img src="images/twitter.svg" alt="Twitter icon" class="inline_icon" /> <a href="https://twitter.com/desmidium">desmidium</a><br> <small> Department of Biostatistics, Epidemiology and Informatics, Institute for Biomedical Informatics, University of Pennsylvania, Philadelphia, PA 19104 </small></p></li>
@@ -58,7 +58,7 @@
 </figure>
 <h3 id="stir-feature-selection-and-tpot-cross-validated-balanced-accuracy">STIR feature selection and TPOT cross-validated balanced accuracy</h3>
 <p>The training dataset consists of 1043 in vivo parasite isolates, each with 4952 transcriptomic features, out of which STIR selects 1068.</p>
-<p>TPOT […]</p>
+<p>We first run 50 replicates of the full configuration TPOT for 1000 generations (or 24 hours - whichever happened first) with the pipeline population size of 1000. We have identified that the majority of pipelines contain Logistic Regression or Linear SVC as a classifier. We further run TPOT for the second time using the same simulation parameters but reducing configuration to only two classifiers in the list: Logistic Regression and Linear SVC. To evaluate a pipeline performance on the training dataset we used balanced accuracy implemented in TPOT as a custom metric. Balanced accuracy computes each class accuracy on per class base and in the binary case is equal to the arithmetic mean of sensitivity and specificity. Using balanced accuracy is highly advised in case of an imbalanced dataset to avoid inflated performance estimates. We chose the top 20 best performing pipelines to be used for the testing dataset predictions and then averaged these predictions to get the final score.</p>
 <h3 id="test-sample-selection-1">Test sample selection</h3>
 <p>In general, the parasite developmental stages in the training set are smaller than those in the test set (Fig. <a href="#fig:stages">2</a>). Because of this difference in distribution, we could not use stage of parasites as guideline to select the test samples. Instead, at 24 hpi, we decided to compute the average of the two lowest probabilities per isolate (across two types of treatments and two biological replicates). In other words, setting our goal to be detecting isolates with SLOW parasite clearance rate (SLOW = 1), we want to decrease the false negative rate (SLOW isolates predicted as FAST) by sacrificing some false positives (FAST isolates predicted as SLOW).</p>
 <figure>
@@ -78,8 +78,8 @@ DOI: <a href="https://doi.org/10.1126/science.1260403">10.1126/science.1260403</
 </div>
 <div id="ref-1BCJtTxnM">
 <p>2. <strong>Data mining with R: learning with case studies</strong><br />
-Luís Torgo<br />
-<em>Chapman &amp; Hall/CRC</em> (2011)<br />
+Luís Torgo<br />
+<em>CRC Press</em> (2011)<br />
 ISBN: <a href="https://worldcat.org/isbn/9781439810187">9781439810187</a></p>
 </div>
 <div id="ref-1HahRBkyb">
